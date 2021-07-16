@@ -1,0 +1,39 @@
+---
+kind: pipeline
+type: docker
+name: build
+
+concurrency:
+  limit: 1
+
+volumes:
+- name: docker
+  host:
+    path: /var/run/docker.sock
+
+globals:
+- &registry
+    registry.fourbs.net
+
+steps:
+- name: build image
+  image: plugins/docker
+  environment:
+    DOCKER_BUILDKIT: 1
+  volumes:
+  - name: docker
+    path: /var/run/docker.sock
+  settings:
+    username: drone
+    password: megsBcZNmACswM37YWnz
+    repo: registry.fourbs.net/fourbs/docker-rust-builder
+    experimental: true
+    registry: *registry
+    tags:
+      - latest
+
+trigger:
+  branch:
+    - master
+  event:
+    - push
