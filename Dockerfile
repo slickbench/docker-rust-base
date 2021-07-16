@@ -2,6 +2,8 @@
 
 FROM rustlang/rust:nightly as odyssey_builder
 
+RUN rustup update && rustup component add clippy
+
 # Install tools
 RUN cargo install sccache
 RUN cargo install cargo-sweep
