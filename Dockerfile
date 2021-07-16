@@ -11,4 +11,4 @@ RUN cargo install cargo-tarpaulin
 RUN cargo install diesel_cli --no-default-features --features "postgres"
 
 # Cleanup
-RUN rm -rf $HOME/.cargo/registry/
+RUN rm -rf /usr/local/cargo/registry
