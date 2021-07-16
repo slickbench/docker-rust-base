@@ -2,7 +2,7 @@
 
 FROM rustlang/rust:nightly as odyssey_builder
 
-RUN rustup update && rustup component add clippy
+RUN rustup default nightly-2021-07-05 && rustup component add clippy && rustup toolchain uninstall nightly
 
 # Install tools
 RUN cargo install sccache
