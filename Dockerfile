@@ -13,3 +13,5 @@ RUN cargo install cargo-chef
 
 # Cleanup
 RUN rm -rf /usr/local/cargo/registry
+
+WORKDIR app
