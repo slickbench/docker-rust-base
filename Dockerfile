@@ -9,6 +9,7 @@ RUN cargo install sccache
 RUN cargo install cargo-sweep
 RUN cargo install cargo-tarpaulin
 RUN cargo install diesel_cli --no-default-features --features "postgres"
+RUN cargo install cargo-chef
 
 # Cleanup
 RUN rm -rf /usr/local/cargo/registry
