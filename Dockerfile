@@ -9,7 +9,7 @@ RUN rustup update && rustup component add clippy
 # Install tools
 RUN cargo install diesel_cli --no-default-features --features postgres
 RUN cargo install sqlx-cli --no-default-features --features postgres
-RUN cargo install cargo-sweep cargo-tarpaulin cargo-chef
+RUN cargo install cargo-sweep cargo-tarpaulin cargo-chef cargo-hack
 
 # Cleanup
 RUN rm -rf /usr/local/cargo/registry
