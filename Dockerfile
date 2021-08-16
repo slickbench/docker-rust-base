@@ -4,6 +4,7 @@ FROM debian:bullseye-slim
 
 ENV PATH="/usr/local/cargo/bin:${PATH}"
 ENV CARGO_HOME=/usr/local/cargo
+ENV RUSTUP_HOME=/usr/local/rustup
 
 RUN apt-get update && apt-get install -y \
   ca-certificates \
