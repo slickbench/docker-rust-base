@@ -9,3 +9,5 @@ Pre-installs the following utilities, useful for rust CI builds:
  - cargo-sweep
  - cargo-tarpaulin
  - diesel_cli w/ postgres support
+ - sqlx-cli w/ postgres support
+ - sccache
