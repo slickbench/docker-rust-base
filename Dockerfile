@@ -29,6 +29,6 @@ RUN rustup default nightly && rustup update && rustup component add clippy
 RUN cargo install diesel_cli --no-default-features --features postgres \
 	&& cargo install sqlx-cli --locked --no-default-features --features postgres \
 	&& cargo install cargo-sweep cargo-chef cargo-hack sccache \
-	&& cargo install -p cargo-tarpaulin --git https://github.com/xd009642/tarpaulin.git \
+	&& cargo install --git https://github.com/xd009642/tarpaulin.git cargo-tarpaulin \
 	&& rm -rf /usr/local/cargo/registry
 
