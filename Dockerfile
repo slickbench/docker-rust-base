@@ -12,9 +12,14 @@ RUN apt-get update && apt-get install -y \
   ca-certificates \
   libpq-dev libssl-dev \
   curl file git ssh \
-  build-essential clang lld pkg-config \
+  build-essential clang lld pkg-config cmake \
+  zlib1g-dev libxxhash-dev libstdc++-10-dev \
   autoconf automake autotools-dev libtool xutils-dev \
   && rm -rf /var/lib/apt/lists/*
+  
+RUN git clone https://github.com/rui314/mold.git /tmp/mold \
+  && cd /tmp/mold && make && make install \
+  && rm -rf /tmp/mold
 
 RUN curl https://sh.rustup.rs -sSf | \
     sh -s -- --default-toolchain nightly -y
