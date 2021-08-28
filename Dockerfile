@@ -28,12 +28,11 @@ COPY cargo.toml $CARGO_HOME/config
 
 RUN mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
 
-RUN rustup default nightly && rustup update && rustup component add clippy
+RUN rustup default nightly && rustup update && rustup component add clippy llvm-tools-preview
 
 # Install tools
 RUN cargo install diesel_cli --no-default-features --features postgres \
 	&& cargo install sqlx-cli --locked --no-default-features --features postgres \
-	&& cargo install cargo-sweep cargo-chef cargo-hack sccache \
-	&& cargo install --git https://github.com/xd009642/tarpaulin.git cargo-tarpaulin \
+	&& cargo install cargo-llvm-cov cargo-chef cargo-hack sccache \
 	&& rm -rf /usr/local/cargo/registry
 
