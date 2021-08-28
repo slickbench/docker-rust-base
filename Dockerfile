@@ -31,6 +31,15 @@ RUN mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
 RUN rustup default nightly && rustup update && rustup component add clippy llvm-tools-preview
 
 # Install tools
+RUN cargo install sccache
+
+ENV RUSTC_WRAPPER sccache
+ENV SCCACHE_S3_USE_SSL true
+ARG SCCACHE_ENDPOINT
+ARG SCCACHE_BUCKET
+ARG AWS_ACCESS_KEY_ID
+ARG AWS_SECRET_ACCESS_KEY
+
 RUN cargo install diesel_cli --no-default-features --features postgres \
 	&& cargo install sqlx-cli --locked --no-default-features --features postgres \
 	&& cargo install cargo-llvm-cov cargo-chef cargo-hack sccache \
