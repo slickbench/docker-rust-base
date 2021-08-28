@@ -1,9 +1,7 @@
 # syntax=docker/dockerfile:experimental
 
 FROM debian:bullseye-slim
-
 WORKDIR app
-
 ENV PATH="/usr/local/cargo/bin:${PATH}"
 ENV CARGO_HOME=/usr/local/cargo
 ENV RUSTUP_HOME=/usr/local/rustup
@@ -15,7 +13,7 @@ RUN apt-get update && apt-get install -y \
   build-essential clang lld pkg-config cmake \
   zlib1g-dev libxxhash-dev libstdc++-10-dev \
   autoconf automake autotools-dev libtool xutils-dev \
-  && rm -rf /var/lib/apt/lists/*
+  && apt-get clean && rm -rf /var/lib/apt/lists/*
   
 RUN git clone https://github.com/rui314/mold.git /tmp/mold \
   && cd /tmp/mold && make && make install \
