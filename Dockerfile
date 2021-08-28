@@ -33,15 +33,11 @@ RUN rustup default nightly && rustup update && rustup component add clippy llvm-
 # Install tools
 RUN cargo install sccache
 
-ENV RUSTC_WRAPPER sccache
-ENV SCCACHE_S3_USE_SSL true
-ARG SCCACHE_ENDPOINT
-ARG SCCACHE_BUCKET
-ARG AWS_ACCESS_KEY_ID
-ARG AWS_SECRET_ACCESS_KEY
+ENV RUSTC_WRAPPER=sccache SCCACHE_DIR=/tmp/sccache
 
 RUN cargo install diesel_cli --no-default-features --features postgres \
 	&& cargo install sqlx-cli --locked --no-default-features --features postgres \
-	&& cargo install cargo-llvm-cov cargo-chef cargo-hack sccache \
-	&& rm -rf /usr/local/cargo/registry
+	&& cargo install cargo-llvm-cov cargo-chef cargo-hack \
+	&& rm -rf /usr/local/cargo/registry \
+	&& sccache -s && rm -r $SCCACHE_DIR
 
