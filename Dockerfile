@@ -9,7 +9,7 @@ ENV RUSTUP_HOME=/usr/local/rustup
 RUN apt-get update && apt-get install -y \
   ca-certificates \
   libpq-dev libssl-dev \
-  curl file git ssh \
+  curl file git ssh capnproto \
   build-essential clang lld pkg-config cmake \
   zlib1g-dev libxxhash-dev libstdc++-10-dev \
   autoconf automake autotools-dev libtool xutils-dev \
