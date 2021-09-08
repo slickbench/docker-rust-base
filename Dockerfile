@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:experimental
 
-FROM debian:bullseye-slim
+FROM debian:sid-slim
 WORKDIR app
 ENV PATH="/usr/local/cargo/bin:${PATH}"
 ENV CARGO_HOME=/usr/local/cargo
