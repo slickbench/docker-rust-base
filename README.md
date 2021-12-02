@@ -11,3 +11,4 @@ Pre-installs the following utilities, useful for rust CI builds:
  - diesel_cli w/ postgres support
  - sqlx-cli w/ postgres support
  - sccache
+ - mold
