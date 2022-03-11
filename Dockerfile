@@ -70,7 +70,7 @@ RUN apt-get update && apt-get install -y \
 COPY --from=sccache $CARGO_HOME/bin/sccache $CARGO_HOME/bin/sccache
 
 RUN cargo install diesel_cli --no-default-features --features postgres \
-	&& cargo install sqlx-cli --no-default-features --features postgres \
+	&& cargo install sqlx-cli --no-default-features --features rustls,postgres \
 	&& cargo install cargo-llvm-cov cargo-chef cargo-hack \
 	&& rm -rf /usr/local/cargo/registry \
 	&& sccache -s && rm -r $SCCACHE_DIR
