@@ -78,4 +78,3 @@ RUN cargo install diesel_cli --no-default-features --features postgres \
 RUN --mount=type=bind,from=mold,src=/tmp/mold,target=/tmp/mold cd /tmp/mold && make install
   
 COPY cargo.toml $CARGO_HOME/config
-
