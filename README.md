@@ -1,6 +1,6 @@
 # Docker Rust Builder
 
-A base docker image for building and testing the odyssey backend. Based on rustlang/nightly
+A base docker image for building and testing the odyssey backend. Based on rustlang/nightly.
 
 ## Features
 
@@ -12,3 +12,4 @@ Pre-installs the following utilities, useful for rust CI builds:
  - sqlx-cli w/ postgres support
  - sccache
  - mold
+
