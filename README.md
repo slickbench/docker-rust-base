@@ -12,4 +12,4 @@ Pre-installs the following utilities, useful for rust CI builds:
  - sqlx-cli w/ postgres support
  - sccache
  - mold
-
+ - cmake
