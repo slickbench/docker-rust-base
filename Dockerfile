@@ -65,6 +65,7 @@ RUN apt-get update && apt-get install -y \
 	curl file \
 	docker.io docker-compose \
 	autoconf automake autotools-dev libtool xutils-dev \
+	cmake \
 	&& apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY --from=sccache $CARGO_HOME/bin/sccache $CARGO_HOME/bin/sccache
