@@ -25,7 +25,11 @@ RUN apt-get update \
 	&& apt-get clean
 
 RUN git clone https://github.com/rui314/mold.git /tmp/mold \
-  && cd /tmp/mold && make
+  && cd /tmp/mold \
+  && mkdir build \
+  && cd build \
+  && cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=c++ .. \
+  && cmake --build . -j $(nproc)
 
 
 #
@@ -76,6 +80,6 @@ RUN cargo install diesel_cli --no-default-features --features postgres \
 	&& rm -rf /usr/local/cargo/registry \
 	&& sccache -s && rm -r $SCCACHE_DIR
 
-RUN --mount=type=bind,from=mold,src=/tmp/mold,target=/tmp/mold cd /tmp/mold && make install
+RUN --mount=type=bind,from=mold,src=/tmp/mold,target=/tmp/mold cd /tmp/mold/build && cmake --install .
   
 COPY cargo.toml $CARGO_HOME/config
