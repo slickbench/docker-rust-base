@@ -13,3 +13,5 @@ Pre-installs the following utilities, useful for rust CI builds:
  - sccache
  - mold
  - cmake
+
+bump
