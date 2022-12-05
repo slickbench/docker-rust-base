@@ -80,6 +80,6 @@ RUN cargo install diesel_cli --no-default-features --features postgres \
 	&& rm -rf /usr/local/cargo/registry \
 	&& sccache -s && rm -r $SCCACHE_DIR
 
-RUN --mount=type=bind,from=mold,src=/tmp/mold,target=/tmp/mold cd /tmp/mold/build && cmake --install .
+RUN --mount=type=bind,from=mold,src=/tmp/mold,target=/tmp/mold cp -r /tmp/mold/build /tmp/mold2 && cd /tmp/mold2 && cmake --install .
   
 COPY cargo.toml $CARGO_HOME/config
