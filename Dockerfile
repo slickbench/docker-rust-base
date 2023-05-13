@@ -57,7 +57,7 @@ RUN cargo install sccache && rm -rf /usr/local/cargo/registry
 
 
 #
-# Build the final image
+# Build the final image 
 #
 FROM rust
 
