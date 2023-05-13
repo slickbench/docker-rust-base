@@ -65,7 +65,7 @@ ENV RUSTC_WRAPPER=sccache SCCACHE_DIR=/tmp/sccache
 
 RUN apt-get update && apt-get install -y \
 	ca-certificates \
-	libpq-dev libstdc++-10-dev \
+	libpq-dev \
 	curl file \
 	docker.io docker-compose \
 	autoconf automake autotools-dev libtool xutils-dev \
